@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Receitas</title>
+  </head>
+  <body>
+    <h1>Lista de Receitas</h1>
+    <a href="{% url 'polls:adicionar_receita' %}">adicionar receita</a>
+
+    {% for receita in receitas %}
+      <div>
+        <h2>{{ receita.nome }}</h2>
+        {% comment %} <p>Ingredientes: {{ receita.ingredientes }}</p> {% endcomment %}
+        <p>Tempo de Preparo: {{ receita.tempo }} minutos</p>
+        <p>Dificuldade: {{ receita.get_dificuldade_display }}</p>
+        {% comment %} <p>Instruções: {{ receita.instrucoes }}</p> {% endcomment %}
+        <a href="/detalhes/{{ receita.id }}/"><button>Detalhes</button></a>
+      </div>
+      <hr />
+    {% endfor %}
+  </body>
+</html>

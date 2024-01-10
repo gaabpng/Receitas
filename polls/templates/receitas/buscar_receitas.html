@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscar Receitas</title>
+  </head>
+  <body>
+    <h1>Buscar Receitas</h1>
+
+    <form method="get" action="{% url 'polls:buscar_receitas' %}">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" />
+
+      <label for="dificuldade">Dificuldade:</label>
+      <select name="dificuldade">
+        <option value="" selected>Selecione a dificuldade</option>
+        <option value="1">Fácil</option>
+        <option value="2">Moderado</option>
+        <option value="3">Intermediário</option>
+        <option value="4">Difícil</option>
+        <option value="5">Muito difícil</option>
+      </select>
+
+      <label for="ingredientes">Ingredientes:</label>
+      <input type="text" name="ingredientes" />
+
+      <label for="tempo_preparo">Tempo de Preparo:</label>
+      <input type="text" name="tempo_preparo" />
+
+      <button type="submit">Buscar</button>
+    </form>
+
+    {% if receitas %}
+      <h2>Resultados:</h2>
+        <ul>
+          {% for receita in receitas %}
+            <li>{{ receita.nome }}</li>
+            <a href="/detalhes/{{ receita.id }}/"><button>Detalhes</button></a>
+          {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="{% url 'polls:lista_receitas' %}">Voltar para a Lista de Receitas</a>
+  </body>
+</html>
