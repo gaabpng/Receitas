@@ -43,3 +43,6 @@ def buscar_receitas(request):
         return render(request, 'receitas/buscar_receitas.html', {'receitas': receitas})
     else:
         return render(request, 'receitas/buscar_receitas.html', {})
+    
+def cadastro(request):
+    return render (request, 'receitas/cadastro.html', {})

@@ -16,7 +16,12 @@ class receita(models.Model):
     ingredientes = models.TextField()
     tempo = models.IntegerField()
     dificuldade = models.IntegerField(choices=DIFICULDADE_CHOICES)
-    instrucoes = models.TextField(default = 'Instruções indisponíveis')
+    instrucoes = models.TextField(default = '')
 
     def __str__(self):
         return self.nome
+    
+class users(models.Model):
+    email = models.CharField(max_length = 300)
+    user = models.CharField(max_length = 100)
+    senha = models.CharField(max_length = 100)
